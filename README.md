@@ -51,4 +51,4 @@ Prefixos numéricos existem para a ordem ser estável e para poderes dizer "põe
 | 4 | Templates e playbooks (proposta, relatório, onboarding) | ⬜ |
 | 5 | Gerador do documento fundacional, camada viva | ⬜ |
 
-Por preencher: `00-core/brand/`, `40-operations/`, `50-hackie/`, `60-education/`, `10-company/{legal,finance,contracts}`.
+Por preencher: `00-core/brand/{logo,assets}`, `40-operations/`, `50-hackie/`, `60-education/`, `10-company/{legal,finance,contracts}`.

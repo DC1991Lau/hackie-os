@@ -1,43 +1,19 @@
 # Hackie — Overview
 
+> Página de entrada. Diz o essencial e aponta para onde está o detalhe.
+> Nada de factos duplicados: pilares, motores, segmentos e receita vivem em
+> `00-core/offering/business-model.md`.
+
 ---
 
 ## O que é a Hackie
 
-A Hackie é o parceiro digital de PMEs, serviços profissionais e instituições na sua transformação digital. Não é uma agência tradicional — é uma prática AI-Native, ágil e sem overhead. Diagnostica, constrói e transfere conhecimento, para que cada negócio cresça a partir do seu valor real, não do seu orçamento.
+A Hackie é o parceiro digital de PMEs, serviços profissionais e instituições na sua
+transformação digital. Não é uma agência tradicional — é uma prática AI-Native, ágil
+e sem overhead. Diagnostica, constrói e transfere conhecimento, para que cada negócio
+cresça a partir do seu valor real, não do seu orçamento.
 
 > Your product. Our systems. Less noise. More impact.
-
----
-
-## Missão
-
-Ser o parceiro digital de negócios, marcas e projetos na sua transformação digital — removendo ruído, construindo sistemas inteligentes e transferindo conhecimento para que cresçam de forma sustentável e nos seus próprios termos.
-
----
-
-## Os 4 Pilares
-
-| Pilar | O que entrega |
-|---|---|
-| **Experience** | Presença digital com intenção — da estratégia e discovery à construção de plataformas vivas que representam quem és, crescem com o negócio e integram inteligência onde cria valor real |
-| **Growth** | Crescimento orgânico através de autoridade de conteúdo, SEO estruturado e visibilidade nos novos canais de descoberta — incluindo AI search |
-| **Efficiency** | Automação de processos manuais e integração de sistemas — para que as equipas gastem tempo no que cria valor, não no que pode ser automatizado |
-| **Education** | Literacia digital para empresas, instituições e sociedade — da capacitação de equipas à formação aplicada às ferramentas reais de cada organização |
-
----
-
-## Como Trabalhamos
-
-\`\`\`
-Pulse → Studio → Partner
-\`\`\`
-
-| Motor | O que é |
-|---|---|
-| **Pulse** | Diagnóstico do ecossistema digital do negócio |
-| **Studio** | Criação e desenvolvimento de sistemas e experiências digitais — implementação completa |
-| **Partner** | A Hackie faz parte do negócio e desenvolve o ecossistema digital continuamente |
 
 ---
 
@@ -49,38 +25,22 @@ Pulse → Studio → Partner
 - SEO orgânico e autoridade de conteúdo (incluindo AI search)
 - Literacia digital e formação aplicada
 
----
-
-## Para quem
-
-| Segmento | O que os trava |
-|---|---|
-| **PMEs e Marcas** | Presença fraca, operação pesada, sem crescimento estruturado |
-| **Serviços Profissionais** | Fluxos manuais, falta de automação, privacidade crítica |
-| **IPSS / Instituições** | Modernização com budget limitado |
+O catálogo completo, serviço a serviço, está em `00-core/offering/services.md`.
 
 ---
 
-## Fontes de Receita
+## Como está organizado
 
-**Espinha dorsal — receita recorrente**
+```
+Pulse → Studio → Partner        os Motores: como entramos e evoluímos
+Experience · Growth ·           os Pilares: onde atuamos
+Efficiency · Education
+```
 
-| Fonte | Tipo |
-|---|---|
-| Partner | Recorrente mensal |
-
-**Ativação — entrada e expansão**
-
-| Fonte | Tipo |
-|---|---|
-| Pulse | One-off |
-| Studio | Por projeto |
-
-**Futuro — a construir**
-
-| Fonte | Tipo |
-|---|---|
-| Produtos digitais | Recorrente / one-time |
+Motores, Pilares, segmentos e fontes de receita — com o detalhe todo — em
+`00-core/offering/business-model.md`.
+Missão, visão e valores em `00-core/foundation/vision-mission-values.md`.
+Preços em `00-core/offering/pricing.md`.
 
 ---
 
