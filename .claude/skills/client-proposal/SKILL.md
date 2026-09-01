@@ -39,7 +39,7 @@ Keep it under four pages. A long proposal reads as uncertainty.
 
 ## The Pulse-first rule
 
-A Studio project sold without a diagnostic is how scope creep starts. When the ask is vague, large, or the fit is uncertain, propose the Pulse as a low-commitment entry (€300–€800 depending on context) and state plainly that its cost can be credited into the Studio project if they proceed.
+A Studio project sold without a diagnostic is how scope creep starts. When the ask is vague, large, or the fit is uncertain, propose the Pulse as a low-commitment entry — pull the band for their context from `00-core/offering/pricing.md` — and state plainly that its cost can be credited into the Studio project if they proceed.
 
 ## Selectivity
 
