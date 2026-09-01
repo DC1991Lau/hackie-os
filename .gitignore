@@ -1,0 +1,20 @@
+# Personal and legal data — kept on disk and in OneDrive, out of git history.
+10-company/
+
+# Client work may contain confidential material. Uncomment to exclude.
+# 20-clients/
+
+# Untriaged
+_inbox/*
+!_inbox/.gitkeep
+
+# OS / editor noise
+Thumbs.db
+desktop.ini
+.DS_Store
+*.tmp
+~$*
+
+# Generated artefacts (rebuilt from 00-core sources)
+# Uncomment once the generator exists in phase 5:
+# 00-core/generated/

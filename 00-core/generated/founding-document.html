@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hackie — Documento Fundacional</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..900;1,9..144,300..900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:          #F7F5F2;
+  --surface:     #FFFFFF;
+  --surface-alt: #EEF3F2;
+  --primary:     #0D2535;
+  --accent:      #00897B;
+  --accent-light:#E0F2F0;
+  --body:        #2C3E50;
+  --muted:       #6B7A8D;
+  --border:      #DDE4E6;
+  --sidebar-w:   260px;
+  --content-max: 780px;
+  --ff-display:  'Fraunces', Georgia, serif;
+  --ff-body:     'Inter', system-ui, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--ff-body);
+  background: var(--bg);
+  color: var(--body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── SIDEBAR ─── */
+.sidebar {
+  position: fixed;
+  top: 0; left: 0;
+  width: var(--sidebar-w);
+  height: 100vh;
+  background: var(--primary);
+  display: flex;
+  flex-direction: column;
+  padding: 40px 0;
+  z-index: 100;
+  overflow-y: auto;
+}
+
+.sidebar-brand {
+  padding: 0 28px 32px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sidebar-brand .logo {
+  font-family: var(--ff-display);
+  font-weight: 700;
+  font-size: 22px;
+  color: #FFFFFF;
+  letter-spacing: -0.5px;
+  display: block;
+}
+
+.sidebar-brand .tagline {
+  font-size: 10px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 6px;
+  line-height: 1.5;
+}
+
+.sidebar-nav {
+  padding: 24px 0;
+  flex: 1;
+}
+
+.sidebar-nav a {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 28px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.5);
+  font-size: 12.5px;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+  transition: color 0.2s, background 0.2s;
+  border-left: 2px solid transparent;
+}
+
+.sidebar-nav a:hover {
+  color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.04);
+}
+
+.sidebar-nav a.active {
+  color: #FFFFFF;
+  border-left-color: var(--accent);
+  background: rgba(0,137,123,0.08);
+}
+
+.sidebar-nav a .num {
+  font-family: var(--ff-display);
+  font-size: 10px;
+  color: var(--accent);
+  opacity: 0.7;
+  min-width: 16px;
+}
+
+.sidebar-nav a.active .num { opacity: 1; }
+
+.sidebar-footer {
+  padding: 20px 28px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  font-size: 10px;
+  color: rgba(255,255,255,0.2);
+  line-height: 1.6;
+}
+
+/* ─── MAIN CONTENT ─── */
+.main {
+  margin-left: var(--sidebar-w);
+  min-height: 100vh;
+}
+
+/* ─── COVER ─── */
+.cover {
+  background: var(--primary);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 80px 64px;
+  position: relative;
+  overflow: hidden;
+}
+
+.cover::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 50% at 80% 50%, rgba(0,137,123,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.cover-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+
+.cover-title {
+  font-family: var(--ff-display);
+  font-size: clamp(52px, 7vw, 88px);
+  font-weight: 700;
+  color: #FFFFFF;
+  line-height: 1.0;
+  letter-spacing: -0.03em;
+  margin-bottom: 32px;
+  max-width: 600px;
+}
+
+.cover-tagline {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1px;
+  max-width: 560px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.06);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+
+.cover-tagline span {
+  padding: 14px 20px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  background: transparent;
+  transition: background 0.3s;
+  font-weight: 400;
+}
+
+.cover-tagline span strong {
+  display: block;
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFFFFF;
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+  font-family: var(--ff-display);
+}
+
+.cover-meta {
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.05em;
+}
+
+.cover-scroll {
+  position: absolute;
+  bottom: 40px;
+  left: 64px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.2);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.cover-scroll::before {
+  content: '';
+  display: block;
+  width: 32px;
+  height: 1px;
+  background: rgba(255,255,255,0.15);
+}
+
+/* ─── SECTIONS ─── */
+.section {
+  padding: 80px 64px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section:last-child { border-bottom: none; }
+
+.section-header {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 48px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--border);
+}
+
+.section-num {
+  font-family: var(--ff-display);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--accent);
+  letter-spacing: 0.05em;
+  min-width: 28px;
+}
+
+.section-title {
+  font-family: var(--ff-display);
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+  flex: 1;
+}
+
+.section-sub {
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-weight: 400;
+}
+
+.section-content {
+  max-width: var(--content-max);
+}
+
+/* ─── MANIFESTO (dark) ─── */
+.section--manifesto {
+  background: var(--primary);
+  color: rgba(255,255,255,0.85);
+}
+
+.section--manifesto .section-header {
+  border-bottom-color: rgba(255,255,255,0.08);
+}
+
+.section--manifesto .section-title {
+  color: #FFFFFF;
+}
+
+.section--manifesto .section-num { color: var(--accent); }
+
+.section--manifesto .section-content p {
+  font-family: var(--ff-display);
+  font-size: clamp(18px, 2.2vw, 24px);
+  font-weight: 300;
+  line-height: 1.5;
+  color: rgba(255,255,255,0.8);
+  margin-bottom: 28px;
+  font-optical-sizing: auto;
+}
+
+.section--manifesto .section-content p:empty { margin-bottom: 12px; }
+
+.section--manifesto .section-content hr.inner-rule {
+  border: none;
+  border-top: 1px solid rgba(255,255,255,0.08);
+  margin: 36px 0;
+}
+
+.section--manifesto blockquote {
+  border: none;
+  background: none;
+  padding: 0;
+  font-family: var(--ff-display);
+  font-size: clamp(22px, 3vw, 32px);
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.03em;
+  line-height: 1.2;
+  margin: 20px 0;
+  font-style: normal;
+}
+
+/* ─── CONTENT TYPOGRAPHY ─── */
+.section-content p {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: var(--body);
+  margin-bottom: 16px;
+  max-width: 680px;
+}
+
+.section-content h2 {
+  font-family: var(--ff-display);
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--primary);
+  letter-spacing: -0.02em;
+  margin: 40px 0 16px;
+  line-height: 1.2;
+}
+
+.section-content h2.sub-section {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--accent);
+  font-family: var(--ff-body);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: 11px;
+  margin: 36px 0 12px;
+}
+
+.section-content h3 {
+  font-family: var(--ff-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--primary);
+  letter-spacing: -0.01em;
+  margin: 32px 0 12px;
+  line-height: 1.3;
+}
+
+.section-content h4 {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 24px 0 8px;
+}
+
+.section-content blockquote {
+  border-left: 3px solid var(--accent);
+  padding: 12px 20px;
+  margin: 20px 0;
+  background: var(--accent-light);
+  border-radius: 0 4px 4px 0;
+  font-style: italic;
+  color: var(--primary);
+  font-size: 15px;
+}
+
+.section-content ul {
+  list-style: none;
+  margin: 12px 0 20px;
+}
+
+.section-content ul li {
+  font-size: 15px;
+  color: var(--body);
+  padding: 6px 0 6px 20px;
+  position: relative;
+  line-height: 1.65;
+}
+
+.section-content ul li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 14px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+  opacity: 0.6;
+}
+
+.section-content ul.numbered {
+  counter-reset: ol;
+}
+
+.section-content ul.numbered li {
+  counter-increment: ol;
+}
+
+.section-content ul.numbered li::before {
+  content: counter(ol);
+  background: none;
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--accent);
+  top: 8px;
+}
+
+.section-content hr.inner-rule {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 32px 0;
+}
+
+/* ─── TABLES ─── */
+.table-wrap {
+  margin: 20px 0 32px;
+  overflow-x: auto;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+thead tr {
+  background: var(--primary);
+}
+
+thead th {
+  padding: 11px 16px;
+  text-align: left;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.75);
+}
+
+tbody tr {
+  border-bottom: 1px solid var(--border);
+  transition: background 0.15s;
+}
+
+tbody tr:last-child { border-bottom: none; }
+
+tbody tr:hover { background: var(--surface-alt); }
+
+tbody td {
+  padding: 11px 16px;
+  color: var(--body);
+  vertical-align: top;
+  line-height: 1.55;
+}
+
+tbody td:first-child { font-weight: 500; color: var(--primary); }
+
+/* ─── FLOW ─── */
+.flow {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin: 24px 0;
+  flex-wrap: wrap;
+}
+
+.flow-step {
+  background: var(--primary);
+  color: #FFFFFF;
+  padding: 14px 24px;
+  border-radius: 4px;
+  font-family: var(--ff-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  flex-shrink: 0;
+}
+
+.flow-arrow {
+  color: var(--accent);
+  font-size: 20px;
+  padding: 0 12px;
+  flex-shrink: 0;
+}
+
+/* ─── CODE LINE ─── */
+.code-line {
+  font-family: var(--ff-body);
+  font-size: 13.5px;
+  color: var(--body);
+  padding: 4px 0;
+  border-left: 2px solid var(--accent-light);
+  padding-left: 12px;
+  margin: 4px 0;
+}
+
+/* ─── SERVICES PILLS ─── */
+.service-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 3px;
+  margin-right: 6px;
+  margin-bottom: 4px;
+}
+
+.tag-native  { background: var(--accent-light); color: var(--accent); }
+.tag-powered { background: #E8EDF5; color: #3A5280; }
+.tag-context { background: #FBF3E4; color: #7A5200; }
+
+/* ─── POSITIONING MAP ─── */
+.position-map {
+  background: var(--primary);
+  border-radius: 6px;
+  padding: 32px;
+  margin: 24px 0;
+  font-family: 'Courier New', monospace;
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  white-space: pre;
+  overflow-x: auto;
+  line-height: 1.6;
+}
+
+.position-map .highlight { color: var(--accent); font-weight: 700; }
+
+/* ─── MOBILE ─── */
+@media (max-width: 900px) {
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+    flex-direction: row;
+    align-items: center;
+    padding: 16px 20px;
+    overflow-x: auto;
+  }
+  .sidebar-brand { padding: 0 20px 0 0; border-bottom: none; border-right: 1px solid rgba(255,255,255,0.08); }
+  .sidebar-brand .tagline { display: none; }
+  .sidebar-nav { display: flex; flex-direction: row; padding: 0 0 0 12px; gap: 0; white-space: nowrap; }
+  .sidebar-nav a { padding: 8px 12px; font-size: 11px; border-left: none; border-bottom: 2px solid transparent; }
+  .sidebar-nav a.active { border-bottom-color: var(--accent); border-left: none; }
+  .sidebar-nav a .num { display: none; }
+  .sidebar-footer { display: none; }
+  .main { margin-left: 0; }
+  .cover, .section { padding: 48px 24px; }
+  .cover-tagline { grid-template-columns: 1fr; }
+  .flow { flex-direction: column; align-items: flex-start; }
+  .flow-arrow { transform: rotate(90deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { transition: none !important; }
+}
+
+/* Focus styles */
+a:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+</style>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-brand">
+    <span class="logo">Hackie</span>
+    <div class="tagline">Documento<br>Fundacional</div>
+  </div>
+  <nav class="sidebar-nav" aria-label="Secções">
+    <a href="#manifesto" data-section="manifesto"><span class="num">01</span>Manifesto</a>
+    <a href="#mvv" data-section="mvv"><span class="num">02</span>Visão &amp; Valores</a>
+    <a href="#overview" data-section="overview"><span class="num">03</span>Overview</a>
+    <a href="#services" data-section="services"><span class="num">04</span>Serviços</a>
+    <a href="#bm" data-section="bm"><span class="num">05</span>Business Model</a>
+    <a href="#pricing" data-section="pricing"><span class="num">06</span>Pricing</a>
+    <a href="#ecosystem" data-section="ecosystem"><span class="num">07</span>Ecosystem</a>
+  </nav>
+  <div class="sidebar-footer">
+    Interno &amp; Confidencial<br>
+    Hackie · 2026
+  </div>
+</aside>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- COVER -->
+  <section class="cover" aria-label="Capa">
+    <p class="cover-eyebrow">Documento Fundacional · Confidencial</p>
+    <h1 class="cover-title">Hackie</h1>
+    <div class="cover-tagline" aria-label="Tagline">
+      <span><strong>Your product.</strong>O que já tens para competir.</span>
+      <span><strong>Our systems.</strong>O que construímos juntos.</span>
+      <span><strong>Less noise.</strong>O que removemos.</span>
+      <span><strong>More impact.</strong>O que fica.</span>
+    </div>
+    <p class="cover-meta">2026 · Lisboa · hackie.pt</p>
+    <div class="cover-scroll" aria-hidden="true">Scroll para explorar</div>
+  </section>
+
+  <!-- 1. MANIFESTO -->
+  <section class="section section--manifesto" id="manifesto">
+    <div class="section-header">
+      <span class="section-num">01</span>
+      <h2 class="section-title">Manifesto</h2>
+      <span class="section-sub">Porque existimos</span>
+    </div>
+    <div class="section-content">
+<p>Acreditamos que a maioria dos negócios já tem o que precisa para competir.</p>
+<p>O produto existe. A experiência existe. A paixão existe.</p>
+<p>O que está no caminho não é falta de talento.</p>
+<p>É falta de acesso.</p>
+<hr class="inner-rule">
+<p>Durante demasiado tempo, as ferramentas que fazem a diferença estiveram do lado errado da mesa. Do lado de quem tem orçamento para grandes agências, grandes equipas, grandes sistemas.</p>
+<p>Os outros — o consultório, a associação, o negócio local, o projeto que ainda cresce — ficaram para trás. Não porque valham menos. Porque ninguém foi lá.</p>
+<p>Nós fomos.</p>
+<hr class="inner-rule">
+<p>A tecnologia não é privilégio. É infraestrutura.</p>
+<p>E a inteligência artificial, bem usada, é o maior nivelador que já tivemos — põe ao alcance de um negócio de três pessoas o que antes exigia trinta.</p>
+<p>Usamo-la para isso. Não como tendência. Como forma de dar acesso ao que sempre esteve fora de alcance.</p>
+<hr class="inner-rule">
+<p>Não entregamos e desaparecemos. Não vendemos horas. Não criamos dependências.</p>
+<p>Construímos sistemas que libertam.</p>
+<p>Transferimos o conhecimento para que os operes sozinho.</p>
+<p>Ficamos até já não sermos precisos — e às vezes ficamos na mesma.</p>
+<hr class="inner-rule">
+<p>Qualquer negócio, seja qual for a dimensão, merece competir a partir do seu valor real.</p>
+<p>É isso que estamos a construir.</p>
+<p><strong>Your product. Our systems. Less noise. More impact.</strong></p>
+    </div>
+  </section>
+
+  <!-- 2. MVV -->
+  <section class="section" id="mvv">
+    <div class="section-header">
+      <span class="section-num">02</span>
+      <h2 class="section-title">Visão, Missão &amp; Valores</h2>
+      <span class="section-sub">Em que acreditamos</span>
+    </div>
+    <div class="section-content">
+<h2 class="sub-section">Visão</h2>
+<blockquote>Tecnologia que serve as pessoas. Sistemas que removem o ruído. Um mundo onde cada negócio cresce a partir do seu próprio valor.</blockquote>
+<p>A Hackie existe porque a maioria dos negócios já tem o que é preciso — o produto, a experiência, a paixão. O que está no caminho é tudo o resto: sistemas fragmentados, presença digital fraca, operações manuais, tecnologia usada sem propósito real.</p>
+<p>Acreditamos num mundo onde a tecnologia trabalha silenciosamente em segundo plano — inteligente, com propósito, humana. Onde negócios de qualquer dimensão podem aceder às ferramentas e sistemas que lhes permitem competir através do seu valor real, não do seu orçamento.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Missão</h2>
+<p>Ser o parceiro digital de negócios, marcas e projetos na sua transformação digital — removendo ruído, construindo sistemas inteligentes e transferindo conhecimento para que cresçam de forma sustentável e nos seus próprios termos.</p>
+<p>Não entregamos projetos e desaparecemos. Construímos parcerias que evoluem. Trazemos pensamento AI-Native a cada projeto — não como tendência, mas como ferramenta genuína para reduzir complexidade e maximizar impacto.</p>
+<p>Cada cliente com quem trabalhamos deve sair mais capaz, mais autónomo e mais no controlo do seu ecossistema digital do que quando chegou. É assim que medimos o sucesso.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Valores</h2>
+<p><strong>Parceria, não transação</strong></p>
+<p>Relações que evoluem. Não entregamos e desaparecemos.</p>
+<p><strong>Soberania do cliente</strong></p>
+<p>Cada parceiro sai dono do seu sistema, dos seus dados e do seu futuro. Trabalhamos para a tua autonomia — mesmo quando a dependência nos pagaria mais.</p>
+<p><strong>Clareza como ofício</strong></p>
+<p>Tornar simples o que era complexo é o trabalho, não um extra.</p>
+<p><strong>Construir, não teorizar</strong></p>
+<p>Ideias valem pelo que se constrói a partir delas.</p>
+<p><strong>Poucos, bem servidos</strong></p>
+<p>Seletividade é responsabilidade. Só aceitamos o que conseguimos defender com integridade.</p>
+    </div>
+  </section>
+
+  <!-- 3. OVERVIEW -->
+  <section class="section" id="overview">
+    <div class="section-header">
+      <span class="section-num">03</span>
+      <h2 class="section-title">Overview</h2>
+      <span class="section-sub">O que somos</span>
+    </div>
+    <div class="section-content">
+<h2 class="sub-section">O que é a Hackie</h2>
+<p>A Hackie é o parceiro digital de PMEs, serviços profissionais e instituições na sua transformação digital. Não é uma agência tradicional — é uma prática AI-Native, ágil e sem overhead. Diagnostica, constrói e transfere conhecimento, para que cada negócio cresça a partir do seu valor real, não do seu orçamento.</p>
+<blockquote>Your product. Our systems. Less noise. More impact.</blockquote>
+<hr class="inner-rule">
+<h2 class="sub-section">Missão</h2>
+<p>Ser o parceiro digital de negócios, marcas e projetos na sua transformação digital — removendo ruído, construindo sistemas inteligentes e transferindo conhecimento para que cresçam de forma sustentável e nos seus próprios termos.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Os 4 Pilares</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Pilar</th><th>O que entrega</th></tr></thead>
+<tbody><tr><td><strong>Experience</strong></td><td>Presença digital com intenção — da estratégia e discovery à construção de plataformas vivas que representam quem és, crescem com o negócio e integram inteligência onde cria valor real</td></tr>
+<tr><td><strong>Growth</strong></td><td>Crescimento orgânico através de autoridade de conteúdo, SEO estruturado e visibilidade nos novos canais de descoberta — incluindo AI search</td></tr>
+<tr><td><strong>Efficiency</strong></td><td>Automação de processos manuais e integração de sistemas — para que as equipas gastem tempo no que cria valor, não no que pode ser automatizado</td></tr>
+<tr><td><strong>Education</strong></td><td>Literacia digital para empresas, instituições e sociedade — da capacitação de equipas à formação aplicada às ferramentas reais de cada organização</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">Como Trabalhamos</h2>
+<p>\<code>\</code>\`</p>
+<p>Pulse → Studio → Partner</p>
+<p>\<code>\</code>\`</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Motor</th><th>O que é</th></tr></thead>
+<tbody><tr><td><strong>Pulse</strong></td><td>Diagnóstico do ecossistema digital do negócio</td></tr>
+<tr><td><strong>Studio</strong></td><td>Criação e desenvolvimento de sistemas e experiências digitais — implementação completa</td></tr>
+<tr><td><strong>Partner</strong></td><td>A Hackie faz parte do negócio e desenvolve o ecossistema digital continuamente</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">O que fazemos</h2>
+<ul>
+<li>Web full-stack, plataformas e CMS próprios</li>
+<li>Assistentes e agentes de IA, sistemas agénticos</li>
+<li>Automação e integração de sistemas</li>
+<li>SEO orgânico e autoridade de conteúdo (incluindo AI search)</li>
+<li>Literacia digital e formação aplicada</li>
+</ul>
+<hr class="inner-rule">
+<h2 class="sub-section">Para quem</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Segmento</th><th>O que os trava</th></tr></thead>
+<tbody><tr><td><strong>PMEs e Marcas</strong></td><td>Presença fraca, operação pesada, sem crescimento estruturado</td></tr>
+<tr><td><strong>Serviços Profissionais</strong></td><td>Fluxos manuais, falta de automação, privacidade crítica</td></tr>
+<tr><td><strong>IPSS / Instituições</strong></td><td>Modernização com budget limitado</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">Fontes de Receita</h2>
+<p><strong>Espinha dorsal — receita recorrente</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fonte</th><th>Tipo</th></tr></thead>
+<tbody><tr><td>Partner</td><td>Recorrente mensal</td></tr>
+</tbody></table></div>
+<p><strong>Ativação — entrada e expansão</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fonte</th><th>Tipo</th></tr></thead>
+<tbody><tr><td>Pulse</td><td>One-off</td></tr>
+<tr><td>Studio</td><td>Por projeto</td></tr>
+</tbody></table></div>
+<p><strong>Futuro — a construir</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fonte</th><th>Tipo</th></tr></thead>
+<tbody><tr><td>Produtos digitais</td><td>Recorrente / one-time</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">Visão a 3 Anos</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Horizonte</th><th>O que muda</th></tr></thead>
+<tbody><tr><td><strong>Ano 1</strong></td><td>Primeiros Partners estabelecidos · primeiros casos documentados · modelo validado no mercado português</td></tr>
+<tr><td><strong>Ano 2</strong></td><td>Escala via parcerias recorrentes · carteira consolidada · primeiros produtos digitais</td></tr>
+<tr><td><strong>Ano 3</strong></td><td>Rede de parceiros consolidada · produtos com receita própria · programa de literacia digital lançado</td></tr>
+</tbody></table></div>
+    </div>
+  </section>
+
+  <!-- 4. SERVIÇOS -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <span class="section-num">04</span>
+      <h2 class="section-title">Serviços</h2>
+      <span class="section-sub">O que fazemos</span>
+    </div>
+    <div class="section-content">
+<h2 class="sub-section">Experience</h2>
+<p><strong>Web Experience</strong></p>
+<p><em>AI-powered</em></p>
+<p>Construímos a tua presença digital de raiz — stack próprio, CMS proprietário e funcionalidades AI-powered onde criam valor real. És dono dos teus dados, do teu sistema e da tua independência. Sem templates, sem lock-in.</p>
+<hr class="inner-rule">
+<p><strong>Landing Page</strong></p>
+<p><em>AI-powered</em></p>
+<p>Uma página focada num único objetivo — conversão, lançamento, evento ou campanha. Design, desenvolvimento, integração com email e CRM, analytics e tracking.</p>
+<hr class="inner-rule">
+<p><strong>Custom Platforms</strong></p>
+<p><em>AI-native, AI-powered</em></p>
+<p>Plataformas feitas à medida de como o teu negócio funciona de verdade — ferramentas internas, portais de cliente, dashboards e centros de operação. Totalmente integradas, AI-powered, e construídas para que a tua equipa e os teus clientes tenham tudo o que precisam num só lugar.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Growth</h2>
+<p><strong>SEO & GEO Audit</strong></p>
+<p><em>AI-powered</em></p>
+<p>Analisamos onde és encontrado — no Google, nos motores de busca por IA, e em todos os sítios onde os teus clientes procuram de facto. Recebes um relatório claro e um roadmap priorizado para agir.</p>
+<hr class="inner-rule">
+<p><strong>Organic SEO & Content Authority</strong></p>
+<p><em>AI-native, AI-powered</em></p>
+<p>Construímos o sistema que te torna visível e credível — estratégia de conteúdo AI-powered, publicação automática e distribuição pelos canais relevantes. Tu focas-te nas ideias, o sistema faz o resto.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Efficiency</h2>
+<p><strong>AI Assistants</strong></p>
+<p><em>AI-native</em></p>
+<p>Inteligência conversacional treinada no teu negócio — responde a perguntas, partilha conhecimento e apoia a tua equipa e os teus clientes 24/7. A resposta certa, sempre disponível.</p>
+<hr class="inner-rule">
+<p><strong>AI Agents</strong></p>
+<p><em>AI-native</em></p>
+<p>Agentes que agem sobre sistemas reais — não se limitam a responder. Executam tarefas, operam ferramentas e fazem o trabalho avançar. Com supervisão humana sempre presente, mas o trabalho pesado fica feito.</p>
+<hr class="inner-rule">
+<p><strong>Automations & Systems Integration</strong></p>
+<p><em>AI-native, AI-powered</em></p>
+<p>Ligamos as tuas ferramentas, automatizamos os teus fluxos e construímos a camada de inteligência que mantém tudo a funcionar. Menos trabalho manual, mais visibilidade, otimização contínua.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Education</h2>
+<p><strong>Workshop</strong></p>
+<p><em>Contexto: empresas, PMEs, organizações</em></p>
+<p>Sessões práticas e hands-on construídas à volta das ferramentas e do contexto real da tua equipa. Não é teoria — é literacia aplicada. A equipa sai capaz, confiante e com tudo documentado para o longo prazo.</p>
+    </div>
+  </section>
+
+  <!-- 5. BUSINESS MODEL -->
+  <section class="section" id="bm">
+    <div class="section-header">
+      <span class="section-num">05</span>
+      <h2 class="section-title">Business Model</h2>
+      <span class="section-sub">Como trabalhamos</span>
+    </div>
+    <div class="section-content">
+<h2 class="sub-section">O que somos</h2>
+<p>Um parceiro AI-Native de transformação digital.</p>
+<p>Eliminamos o ruído para que o cliente se foque no que realmente cria valor.</p>
+<blockquote>Your product. Our systems. Less noise. More impact.</blockquote>
+<p>A Hackie tem uma estrutura leve e AI-Native, sem overhead de agência. Sem hierarquias, sem camadas de gestão entre o cliente e o trabalho, sem ruído. Essa leveza é uma escolha — permite agilidade real e foco total em cada parceiro.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Como trabalhamos</h2>
+<p>Os <strong>Motores</strong> definem a forma como entramos e evoluímos em cada parceria. Os <strong>Pilares</strong> definem as áreas onde atuamos. Em cada Motor, podemos trabalhar em qualquer Pilar — ou em vários em simultâneo.</p>
+<p>\<code>\</code>\`</p>
+<p>Pulse → Studio → Partner</p>
+<p>\<code>\</code>\`</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Motor</th><th>O que é</th></tr></thead>
+<tbody><tr><td><strong>Pulse</strong></td><td>Diagnóstico do ecossistema digital do negócio</td></tr>
+<tr><td><strong>Studio</strong></td><td>Criação e desenvolvimento de sistemas e experiências digitais — implementação completa</td></tr>
+<tr><td><strong>Partner</strong></td><td>A Hackie faz parte do negócio e desenvolve o ecossistema digital continuamente</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">Os 4 Pilares</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Pilar</th><th>O que entrega</th></tr></thead>
+<tbody><tr><td><strong>Experience</strong></td><td>Presença digital com intenção — da estratégia e discovery à construção de plataformas vivas que representam quem és, crescem com o negócio e integram inteligência onde cria valor real</td></tr>
+<tr><td><strong>Growth</strong></td><td>Crescimento orgânico através de autoridade de conteúdo, SEO estruturado e visibilidade nos novos canais de descoberta — incluindo AI search</td></tr>
+<tr><td><strong>Efficiency</strong></td><td>Automação de processos manuais e integração de sistemas — para que as equipas gastem tempo no que cria valor, não no que pode ser automatizado</td></tr>
+<tr><td><strong>Education</strong></td><td>Literacia digital para empresas, instituições e sociedade — da capacitação de equipas à formação aplicada às ferramentas reais de cada organização</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">Para quem</h2>
+<div class="table-wrap"><table>
+<thead><tr><th>Segmento</th><th>O que os trava</th></tr></thead>
+<tbody><tr><td>PMEs e Marcas</td><td>Presença fraca, operação pesada, sem crescimento estruturado</td></tr>
+<tr><td>Serviços Profissionais</td><td>Fluxos manuais, falta de automação, privacidade crítica</td></tr>
+<tr><td>IPSS / Instituições</td><td>Modernização com budget limitado</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">Fontes de Receita</h2>
+<p>O modelo financeiro está organizado em duas camadas com papéis distintos.</p>
+<p><strong>Espinha dorsal — receita recorrente e previsível</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fonte</th><th>Tipo</th><th>Papel</th></tr></thead>
+<tbody><tr><td>Partner</td><td>Recorrente mensal</td><td>Estabilidade, previsibilidade e relação de longo prazo</td></tr>
+</tbody></table></div>
+<p><strong>Ativação — entrada e expansão</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fonte</th><th>Tipo</th><th>Papel</th></tr></thead>
+<tbody><tr><td>Pulse</td><td>One-off</td><td>Porta de entrada, baixo compromisso</td></tr>
+<tr><td>Studio</td><td>Por projeto</td><td>Primeira implementação, gera o salto para Partner</td></tr>
+</tbody></table></div>
+<p><strong>Futuro — a construir</strong></p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fonte</th><th>Tipo</th></tr></thead>
+<tbody><tr><td>Produtos digitais</td><td>Recorrente / one-time</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">A lógica do modelo</h2>
+<ul>
+<li>O <strong>Pulse</strong> abre a relação com baixo risco para o cliente — e qualifica se há fit antes de qualquer compromisso maior.</li>
+<li>O <strong>Studio</strong> é onde acontece a maior parte da faturação por projeto — e é a ponte natural para a parceria contínua.</li>
+<li>O <strong>Partner</strong> é o objetivo central: receita recorrente, margem previsível e a relação onde a Hackie cria mais valor.</li>
+</ul>
+<hr class="inner-rule">
+<h2 class="sub-section">Princípios</h2>
+<ul>
+<li>Parceria sobre transação</li>
+<li>Colaboração horizontal</li>
+<li>AI no centro da operação</li>
+<li>Transferência de saber-fazer — não dependência</li>
+<li>Crescimento sustentável, não forçado</li>
+<li>Seletividade como responsabilidade — só trabalhamos em projetos em que acreditamos</li>
+</ul>
+    </div>
+  </section>
+
+  <!-- 6. PRICING -->
+  <section class="section" id="pricing">
+    <div class="section-header">
+      <span class="section-num">06</span>
+      <h2 class="section-title">Pricing</h2>
+      <span class="section-sub">Quanto custa</span>
+    </div>
+    <div class="section-content">
+<h2 class="sub-section">Princípio base</h2>
+<p>A Hackie não vende horas — vende resultados. O preço reflete o valor entregue e o impacto no negócio do parceiro, não o tempo gasto.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Pricing por Motor</h2>
+<h3>Pulse — Diagnóstico</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Contexto</th><th>Preço</th></tr></thead>
+<tbody><tr><td>PME / negócio local</td><td>€300–€450</td></tr>
+<tr><td>Serviços profissionais / IPSS</td><td>€400–€600</td></tr>
+<tr><td>Organização com múltiplas áreas</td><td>€500–€800</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h3>Studio — Projeto completo</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>Tipo de projeto</th><th>Preço</th></tr></thead>
+<tbody><tr><td>Website como plataforma viva (discovery + CMS + estrutura de conteúdo + SEO base)</td><td>€2.500–€5.000</td></tr>
+<tr><td>Website institucional completo + SEO base</td><td>€1.500–€3.000</td></tr>
+<tr><td>Plataforma digital com CMS e integrações</td><td>€2.500–€6.000</td></tr>
+<tr><td>Sistema de automação completo (multi-fluxo)</td><td>€1.500–€4.000</td></tr>
+<tr><td>Programa de educação digital (conteúdo + workshops + materiais)</td><td>€1.200–€3.500</td></tr>
+<tr><td>Auditoria SEO + plano de conteúdo estratégico</td><td>€1.200–€2.500</td></tr>
+<tr><td>Sistema de conteúdo com autoridade + calendário editorial</td><td>€1.500–€3.500</td></tr>
+<tr><td>Assistente de IA ou automação específica</td><td>€1.200–€2.500</td></tr>
+<tr><td>Sistema de operações (múltiplos fluxos integrados)</td><td>€2.000–€5.000</td></tr>
+<tr><td>Projeto combinado (Experience + Growth + Efficiency)</td><td>€3.500–€8.000</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h3>Partner — Parceria contínua</h3>
+<p>Retainer mensal. Âmbito definido em conjunto no início da parceria e revisto periodicamente.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Preço mensal</th></tr></thead>
+<tbody><tr><td>€700–€2.000/mês</td></tr>
+</tbody></table></div>
+<p>Compromisso mínimo: 3 meses. Desconto para compromisso anual: 10%–15%.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">Formação</h2>
+<p>Sessões e formações facilitadas pela Hackie — IA, ferramentas digitais e literacia aplicada. Base de cálculo: €35–€50/hora, consoante preparação, contexto e dimensão do grupo.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Formato</th><th>Duração</th><th>Preço indicativo</th></tr></thead>
+<tbody><tr><td>Sessão / workshop</td><td>meio-dia (~3–4h)</td><td>€120–€200</td></tr>
+<tr><td>Formação</td><td>dia completo (~6–7h)</td><td>€230–€325</td></tr>
+<tr><td>Módulo / programa</td><td>multi-sessão</td><td>sob proposta</td></tr>
+</tbody></table></div>
+<hr class="inner-rule">
+<h2 class="sub-section">Como os preços evoluem</h2>
+<p>Os preços não são estáticos — acompanham a maturidade da prática e a solidez dos casos de referência.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Fase</th><th>O que muda</th><th>Impacto no preço</th></tr></thead>
+<tbody><tr><td><strong>Entrada</strong></td><td>Sem portfolio visível, a construir casos de referência</td><td>Preços de introdução</td></tr>
+<tr><td><strong>Validação (6–12 meses)</strong></td><td>Primeiros resultados documentados, testemunhos reais</td><td>+20%–30% nos novos projetos</td></tr>
+<tr><td><strong>Referência (Ano 2+)</strong></td><td>Casos sólidos, reputação estabelecida</td><td>Preços plenos de mercado</td></tr>
+</tbody></table></div>
+<p>A seletividade sustenta esta evolução: trabalhar em menos projetos, mas com resultados sólidos, é o que justifica o aumento de preço ao longo do tempo.</p>
+    </div>
+  </section>
+
+  <!-- 7. ECOSYSTEM -->
+  <section class="section" id="ecosystem">
+    <div class="section-header">
+      <span class="section-num">07</span>
+      <h2 class="section-title">Ecosystem</h2>
+      <span class="section-sub">O mercado e o nosso lugar nele</span>
+    </div>
+    <div class="section-content">
+<h2 class="sub-section">Análise de Mercado</h2>
+<hr class="inner-rule">
+<h2 class="sub-section">1. The Landscape</h2>
+<h3>O que está a mudar — e porque importa</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>O que muda</th><th>Porque importa</th></tr></thead>
+<tbody><tr><td>A IA generativa tornou-se acessível a qualquer organização</td><td>O fosso tecnológico entre grandes e pequenos nunca foi tão fácil de fechar — mas nunca houve tanta confusão sobre como o fazer</td></tr>
+<tr><td>Apenas 7% das PMEs portuguesas adotaram IA, face a 35% das grandes</td><td>A maioria do mercado-alvo ainda não começou — a janela de entrada é agora</td></tr>
+<tr><td>40% das PMEs europeias sentem-se não preparadas para o futuro digital</td><td>Há consciência do problema mas ausência de ação — o gap não é de motivação, é de acesso e confiança</td></tr>
+<tr><td>As agências tradicionais operam por projeto, com entrega e saída</td><td>Parceria contínua e soberania digital são posicionamentos por ocupar</td></tr>
+<tr><td>O EU AI Act entrou em vigor em 2024, com obrigações de literacia desde fevereiro de 2025</td><td>As organizações precisam de quem as ajude a navegar conformidade — em linguagem que percebam</td></tr>
+<tr><td>Portugal investiu €4,5 mil milhões do PRR em transformação digital, com meta de 90% das PMEs digitalizadas até 2030</td><td>Há financiamento e mandato político — falta execução no terreno</td></tr>
+</tbody></table></div>
+<h3>Onde começa a Hackie</h3>
+<p>Lisboa, Portugal. Mercado nacional como base, com potencial de expansão ibérica. Ecossistema de inovação em crescimento, com infraestrutura digital sólida mas adoção fragmentada nas PMEs e no terceiro setor.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">2. Para quem</h2>
+<p><strong>O gestor da PME de serviços</strong></p>
+<p>Sócio-gerente de uma contabilidade, clínica ou consultora de 8 a 20 pessoas. Negócio a funcionar, clientes satisfeitos — o que falta é tempo. A operação corre em email, Excel e WhatsApp. Sabe que existe melhor, mas não confia em agências que "entram, faturam e desaparecem".</p>
+<p><em>Precisa de:</em> um parceiro que diagnostique, execute — e fique.</p>
+<p><strong>O responsável de uma IPSS ou instituição de ensino</strong></p>
+<p>Gere uma associação, escola ou IPSS com equipa dedicada mas sobrecarregada. Missão e impacto reais, budget limitado, sistemas desatualizados. Tem acesso a financiamento europeu, mas não capacidade interna para o transformar em sistemas que funcionem.</p>
+<p><em>Precisa de:</em> modernização humana, sustentável e com transferência real de conhecimento.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">3. Os Quatro Pilares no mercado</h2>
+<h3>Experience</h3>
+<p>Mercado saturado de agências que entregam websites e pouco mais: templates sem estratégia, sem integração, sem continuidade. O cliente fica com um site que envelhece e cria mais dependência do que autonomia.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quem já lá está</th><th>Falha porque</th></tr></thead>
+<tbody><tr><td>Agências full-service (Codedesign, Fullsix)</td><td>Custo elevado, foco em grandes contas</td></tr>
+<tr><td>Freelancers e micro-agências</td><td>Sem estratégia nem continuidade</td></tr>
+<tr><td>Plataformas DIY (Wix, Squarespace)</td><td>Resultado genérico, sem integração</td></tr>
+<tr><td>Boutiques (PLANA, Homem Máquina)</td><td>Premium, foco em produto — não em transformação de PME</td></tr>
+</tbody></table></div>
+<p><strong>O gap:</strong> ninguém combina qualidade de execução, preço acessível e parceria contínua para PME/IPSS — nem constrói presença digital como sistema coerente com transferência de conhecimento.</p>
+<p><strong>Serviços Hackie:</strong> Web Experience · Custom Platforms</p>
+<hr class="inner-rule">
+<h3>Growth</h3>
+<p>SEO em Portugal dominado por agências focadas em relatórios e otimizações pontuais. A AI Search está a criar uma nova camada de visibilidade que a maioria das PMEs desconhece — quem não aparecer nos sistemas de IA nos próximos anos fica invisível para uma fatia crescente do mercado.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quem já lá está</th><th>Falha porque</th></tr></thead>
+<tbody><tr><td>Agências SEO tradicionais (UniK SEO)</td><td>Foco em Google clássico, sem estratégia de AI Search</td></tr>
+<tr><td>Especialistas AISO (AISO Hub)</td><td>Nicho muito específico, sem integração com o negócio</td></tr>
+<tr><td>Agências de conteúdo</td><td>Sem estrutura técnica nem autoridade sustentável</td></tr>
+</tbody></table></div>
+<p><strong>O gap:</strong> ninguém integra SEO orgânico com a estratégia de negócio da PME de forma contínua e acessível, nem trata o crescimento orgânico como sistema em vez de campanha.</p>
+<p><strong>Serviços Hackie:</strong> SEO & GEO Audit · Organic SEO & Content Authority</p>
+<hr class="inner-rule">
+<h3>Efficiency</h3>
+<p>A automação para PMEs existe como produto (Zapier, Make, n8n), não como serviço integrado de parceria. A maioria corre em fluxos manuais não por falta de ferramentas, mas por falta de quem as configure, integre e ensine.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quem já lá está</th><th>Falha porque</th></tr></thead>
+<tbody><tr><td>Consultoras enterprise (S4Digital, Indigo)</td><td>Custo e complexidade fora do alcance de PMEs</td></tr>
+<tr><td>Plataformas de automação (Make, Zapier, n8n)</td><td>Exigem conhecimento técnico, sem suporte humano</td></tr>
+<tr><td>Agências de AI marketing (Drivenly)</td><td>Foco só em marketing, sem visão sistémica</td></tr>
+</tbody></table></div>
+<p><strong>O gap:</strong> não existe um parceiro acessível que configure, integre e transfira conhecimento de automação — e que trate assistentes/agentes como sistemas treinados no contexto do negócio, não produtos genéricos. Privacidade e soberania de dados são ignoradas pela maioria.</p>
+<p><strong>Serviços Hackie:</strong> AI Assistants · AI Agents · Automations & Systems Integration</p>
+<hr class="inner-rule">
+<h3>Education</h3>
+<p>Formação digital dividida entre academias online genéricas (cursos teóricos descontextualizados) e formação corporativa cara e rígida. No meio, um vazio: PMEs, IPSS e equipas que precisam de literacia prática, no contexto das suas ferramentas reais, com acompanhamento. O AI Act tornou a formação em IA quase obrigatória — mas a oferta continua teórica.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Quem já lá está</th><th>Falha porque</th></tr></thead>
+<tbody><tr><td>Academias online (Udemy, Coursera)</td><td>Sem contexto nem aplicação prática</td></tr>
+<tr><td>Formação corporativa (CEGOC, Galileu)</td><td>Cara, rígida, foco em certificação</td></tr>
+<tr><td>Formadores independentes de IA</td><td>Genéricos, sem ligação à operação real</td></tr>
+</tbody></table></div>
+<p><strong>O gap:</strong> ninguém oferece formação prática e contextualizada para PMEs e instituições — e raramente quem ensina é quem constrói sistemas reais.</p>
+<p><strong>A vantagem Hackie:</strong> não somos só formadores. Construímos os sistemas que ensinamos.</p>
+<p><strong>Serviços Hackie:</strong> Workshop</p>
+<hr class="inner-rule">
+<h2 class="sub-section">4. O que já existe no terreno</h2>
+<p>A PME média usa 6 a 10 ferramentas digitais, mas nenhum sistema que as integre. Cada ferramenta resolve um problema isolado; o resultado é fragmentação e operação manual a ligar os pontos.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Função</th><th>Como resolvem hoje</th><th>Digitalização</th></tr></thead>
+<tbody><tr><td>Comunicação com clientes</td><td>Email + WhatsApp</td><td>Baixa — sem histórico estruturado</td></tr>
+<tr><td>Gestão interna</td><td>Email + Excel</td><td>Baixa — sem automação</td></tr>
+<tr><td>Presença digital</td><td>Website estático</td><td>Média — não converte nem é atualizado</td></tr>
+<tr><td>Crescimento</td><td>Redes sociais orgânicas</td><td>Baixa — sem estratégia</td></tr>
+<tr><td>Formação da equipa</td><td>Ad hoc ou nenhuma</td><td>Muito baixa</td></tr>
+<tr><td>Reporte / analytics</td><td>Excel manual</td><td>Muito baixa — decisões sem dados</td></tr>
+</tbody></table></div>
+<p><strong>O essencial vs o que falta:</strong> usam diariamente email, WhatsApp, faturação e redes sociais. Falta-lhes o que nunca implementaram — CRM, automação, analytics, SEO estruturado — não por falta de ferramentas, mas por falta de quem as configure, integre e ensine.</p>
+<hr class="inner-rule">
+<h2 class="sub-section">5. Onde estamos</h2>
+<h3>O que existe vs o que falta</h3>
+<div class="table-wrap"><table>
+<thead><tr><th>O que existe</th><th>O que falta</th></tr></thead>
+<tbody><tr><td>Agências grandes com escala</td><td>Acessíveis para PMEs e IPSS</td></tr>
+<tr><td>Freelancers baratos e rápidos</td><td>Com estratégia, continuidade e transferência de saber</td></tr>
+<tr><td>Plataformas de automação self-service</td><td>Com implementação humana e acompanhamento</td></tr>
+<tr><td>Consultoras enterprise</td><td>Com parceria contínua para organizações pequenas</td></tr>
+<tr><td>Agências de SEO técnico</td><td>Com integração no negócio e visão de AI Search</td></tr>
+<tr><td>Academias online</td><td>Práticas, contextualizadas, integradas com sistemas reais</td></tr>
+</tbody></table></div>
+<h3>Positioning Map</h3>
+<p>\<code>\</code>\`</p>
+<p>OWNERSHIP</p>
+<p>(cliente controla o ecossistema)</p>
+<p>│</p>
+<p>Estúdios de produto ●       │            ● Hackie</p>
+<p>│</p>
+<p>Agências boutique ●         │</p>
+<p>──────────────────────────────┼──────────────────────────────</p>
+<p>TRANSACTIONAL                 │                   PARTNERSHIP</p>
+<p>(entrega e sai)               │                 (fica e evolui)</p>
+<p>│</p>
+<p>Freelancers ●               │   ● Especialistas AI / nicho</p>
+<p>│   ● Agências full-service</p>
+<p>DEPENDENCY</p>
+<p>(cliente depende de terceiros)</p>
+<p>\<code>\</code>\`</p>
+<p>A Hackie ocupa sozinha o quadrante <strong>Partnership + Ownership</strong>: fica, evolui, e o cliente sai a controlar o próprio ecossistema.</p>
+<h3>The Moat — o que é difícil de copiar</h3>
+<ul>
+<li><strong>Parceria focada em autonomia</strong> — a maioria das agências tem incentivo económico para criar dependência; a Hackie tem o inverso como princípio</li>
+<li><strong>Construir + ensinar</strong> — quem dá formação é quem constrói os sistemas reais</li>
+<li><strong>Foco em transferência de conhecimento</strong> — diferenciador genuíno num mercado onde a dependência é o modelo dominante</li>
+</ul>
+<h3>Por onde começa</h3>
+<p>\<code>\</code>\`</p>
+<ul class="numbered">
+<li>Primeiros projetos de website — porta de entrada e casos de referência</li>
+<li>Primeiros Partners — 2 a 3 PMEs/IPSS em modelo recorrente</li>
+<li>Casos de referência — resultados documentados que alimentam SEO e passa-palavra</li>
+<li>Escala seletiva — mais Partners + primeiros produtos digitais (crescer sistemas, não equipa)</li>
+</ul>
+<p>\<code>\</code>\`</p>
+<hr class="inner-rule">
+<h2 class="sub-section">6. Como trabalhamos por sector</h2>
+<blockquote>Em cada sector, a Hackie entra por um Motor (Pulse, Studio ou Partner) e atua nos Pilares relevantes. As tabelas abaixo mostram os Pilares e serviços típicos por sector.</blockquote>
+<h3>PMEs e Marcas</h3>
+<p><em>Transição da operação tradicional para um ecossistema digital que trabalha sozinho.</em></p>
+<p><strong>O ruído:</strong> marcas com boa reputação offline mas presença digital estática — sites-catálogo, encomendas por email, stock em Excel.</p>
+<p><strong>Entrada típica:</strong> Pulse → Studio → Partner.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Pilar</th><th>Serviço</th><th>O que resolve</th></tr></thead>
+<tbody><tr><td>Experience</td><td>Web Experience</td><td>Presença que representa o negócio e converte</td></tr>
+<tr><td>Efficiency</td><td>Automations & Systems Integration</td><td>Ligar automaticamente venda e faturação</td></tr>
+</tbody></table></div>
+<h3>Serviços Profissionais</h3>
+<p><em>Recuperação de tempo faturável e proteção de dados críticos.</em></p>
+<p><strong>O ruído:</strong> profissionais qualificados que perdem 10+ horas semanais em triagem de email e procura de documentos.</p>
+<p><strong>Entrada típica:</strong> Pulse → Studio, com evolução para Partner.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Pilar</th><th>Serviço</th><th>O que resolve</th></tr></thead>
+<tbody><tr><td>Experience</td><td>Web Experience · Custom Platforms</td><td>Credibilidade + portal de cliente</td></tr>
+<tr><td>Growth</td><td>Organic SEO & Content Authority</td><td>Autoridade orgânica no sector</td></tr>
+<tr><td>Efficiency</td><td>AI Assistants · Automations</td><td>Assistente interno + onboarding automático</td></tr>
+</tbody></table></div>
+<h3>IPSS e Instituições</h3>
+<p><em>Modernização humana e máximo impacto com budget limitado.</em></p>
+<p><strong>O ruído:</strong> burocracia manual, dados dispersos, comunicação que não reflete o impacto real.</p>
+<p><strong>Entrada típica:</strong> Pulse → Studio, faseado conforme o budget.</p>
+<div class="table-wrap"><table>
+<thead><tr><th>Pilar</th><th>Serviço</th><th>O que resolve</th></tr></thead>
+<tbody><tr><td>Experience</td><td>Web Experience</td><td>Comunica impacto, capta voluntariado/donativos</td></tr>
+<tr><td>Efficiency</td><td>Automations & Systems Integration</td><td>Automatizar agradecimentos, recibos, comunicação</td></tr>
+<tr><td>Education</td><td>Workshop</td><td>Capacitar a equipa interna</td></tr>
+</tbody></table></div>
+<blockquote>Em todos os sectores, a Hackie opera sob <strong>Zero Lock-in</strong>: no final, o conhecimento é transferido para que o parceiro seja dono do seu sistema.</blockquote>
+    </div>
+  </section>
+
+</main>
+
+<script>
+// Active sidebar nav on scroll
+const navLinks = document.querySelectorAll('.sidebar-nav a');
+const sections = document.querySelectorAll('section[id]');
+
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.dataset.section === e.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-30% 0px -60% 0px', threshold: 0 });
+
+sections.forEach(s => obs.observe(s));
+
+// Set first link active on load
+if (navLinks.length) navLinks[0].classList.add('active');
+</script>
+
+</body>
+</html>
