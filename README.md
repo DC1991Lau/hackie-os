@@ -38,7 +38,7 @@ Prefixos numéricos existem para a ordem ser estável e para poderes dizer "põe
 1. Preços, serviços e posicionamento vivem em `00-core/`. Não os copies para outro lado — aponta.
 2. `00-core/generated/` é output. Editar a fonte, não o gerado.
 3. `00-core/market/ecosystem.md` nomeia concorrentes reais. Nunca sai.
-4. `10-company/` tem dados pessoais e está no `.gitignore`.
+4. `10-company/` tem dados pessoais e **está** em git desde 2026-09-01 — o repositório tem de se manter privado.
 5. Ficheiro sem sítio óbvio → `_inbox/`. Nunca solto na raiz.
 
 ## Estado

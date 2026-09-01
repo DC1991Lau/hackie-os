@@ -1,5 +1,7 @@
-# Personal and legal data — kept on disk and in OneDrive, out of git history.
-10-company/
+# 10-company/ contem dados pessoais (NIF, morada, seguranca social).
+# Decisao 2026-09-01: passa a ser versionado, porque o backup vale mais que o
+# risco e o repositorio e privado. Ver 90-log/decisions/2026-09-01-versionar-10-company.md
+# Se o repositorio deixar de ser privado, isto tem de ser revertido primeiro.
 
 # Client work may contain confidential material. Uncomment to exclude.
 # 20-clients/
